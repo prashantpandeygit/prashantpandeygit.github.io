@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-color: #18181b;
+    --text-color: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent-color: #4a8cff;
+    --card-bg: #1e1e1e;
+    --border-color: #333;
+    --divider-color: #444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 0.95rem; 
+    word-spacing: 0.1rem;
+    filter: blur(10px);
+    transition: opacity 0.8s ease, filter 0.8s ease;
+}
+
+body.loaded {
+    opacity: 1;
+    filter: blur(0);
+}
+
+.container {
+    max-width: 840px; 
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: left;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: #FFA500; /* Yellowish-orange color */
+}
+
+.text-link {
+    color: var(--accent-color);
+    text-decoration: underline;
+    text-decoration-color: var(--accent-color);
+    text-underline-offset: 2px;
+}
+
+header {
+    margin-bottom: 1.5rem;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info h1 {
+    font-size: 1.3rem; 
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+}
+
+.location {
+    margin-bottom: 0.5rem;
+}
+
+.location i {
+    margin-right: 0.5rem;
+}.social-links {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem; 
+    margin-top: 1rem;}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+}
+
+.social-links i {
+    margin-right: 0.25rem;
+}
+
+.divider {
+    margin: 0 0.5rem;
+    color: var(--text-secondary);
+}
+
+.bio {
+    font-size: 0.9rem;
+    line-height: 1.9;
+    max-width: 800px;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+}
+
+.section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 0.95rem; 
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.section-title:before {
+    content: "";
+    height: 1px;
+    background-color: var(--divider-color);
+    width: 20px;
+    margin-right: 1rem;
+}
+
+.section-title:after {
+    content: "";
+    height: 1px;
+    background-color: var(--divider-color);
+    flex: 1;
+    margin-left: 1rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.project-card {
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    border: none;
+    
+}
+
+.project-card h3 {
+    font-size: 0.95rem; 
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    text-align: left;
+}
+
+.project-card p {
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem; 
+    text-align: left;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    font-size: 0.85rem; 
+}
+
+.project-link {
+    display: flex;
+    align-items: center;
+}
+
+.project-link i {
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .profile {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-image {
+        margin-bottom: 1rem;
+        margin-right: 0;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .profile-info h1 {
+        font-size: 1.75rem;
+    }
+
+    .social-links {
+        flex-wrap: wrap;
+    }
+}
+.footer-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px; 
+}
+
+.footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+.footer .heart {
+    color: --text-secondary; 
+}
+
+.footer strong {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.footer .code-icon svg {
+    vertical-align: middle;
+}
+
+
