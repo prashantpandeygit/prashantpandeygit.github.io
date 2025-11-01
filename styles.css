@@ -307,19 +307,18 @@ header {
     height: 0; 
     opacity: 0;
     overflow: hidden;
-    transition: width 0.3s ease-in-out, height 0.3s ease-in-out, opacity 0.3s ease-in-out, bottom 0.3s ease-in-out; /* Changed top to bottom in transition */
+    transition: opacity 0.3s ease-in-out; 
     background-color: transparent;
     bottom: 0; 
     z-index: 1002; 
 }
 
 .spotify-player-popup.open {
-    width: 400px; 
+    width: 350px; 
     height: 100px; 
     opacity: 1;
-    top: auto; 
-    bottom: 50px; 
-    left: auto; 
+    top: 80px; 
+    left: 300px; 
     right: 0; 
 }
 
