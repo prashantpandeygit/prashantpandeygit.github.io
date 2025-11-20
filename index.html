@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <div class="sidebar">
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="work-highlights">Work Highlights</a>
+            <a href="#" class="nav-item" data-section="blogs">Blogs</a>
+        </nav>
+    </div>
     <div class="container">
         <header>
             <div class="profile">
@@ -47,26 +53,40 @@
                             </svg>
                         </a>
                         <span class="divider"></span>
-                        <a href="https://medium.com/@pandeyps" target="_blank">
-                            <svg fill="#ffffff" width="26" height="28" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><title/><path d="M60.72,16.32l0,0a1,1,0,0,0-.17-.13l-.05,0L44,7.9a3,3,0,0,0-3.86,1L29,26.17l-6.14-9.7a1,1,0,0,0-.13-.17h0l0,0h0a1,1,0,0,0-.27-.18L7.34,8.55A3,3,0,0,0,3,11.24V46.76a3,3,0,0,0,1.66,2.68l14,7A3,3,0,0,0,23,53.76V39.12L56.63,56.39A3,3,0,0,0,61,53.72V17A1,1,0,0,0,60.72,16.32ZM21,53.76a1,1,0,0,1-1.45.89l-14-7A1,1,0,0,1,5,46.76V11.24a1,1,0,0,1,.47-.85A1,1,0,0,1,6,10.23a1,1,0,0,1,.44.11L21,17.62Zm2-16.87V20.45L38.42,44.79ZM30.17,28,41.86,10a1,1,0,0,1,1.29-.35L58.56,17.4,41,45.13ZM59,53.72a1,1,0,0,1-1.46.89L42.31,46.79,59,20.45Z"/></svg>
+                        <a href="mailto:prashantpandeyiuet@gmail.com" target="_blank">
+                            <svg width="24" height="24" viewBox="0 0 64 64" fill="none"
+                                stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                                xmlns="http://www.w3.org/2000/svg">
+
+                                <path d="M58.0034485,8H5.9965506c-3.3136795,0-5.9999995,2.6862001-5.9999995,6v36c0,3.3137016,2.6863203,6,5.9999995,6
+                                    h52.006897c3.3137016,0,6-2.6862984,6-6V14C64.0034485,10.6862001,61.3171501,8,58.0034485,8z M62.0034485,49.1108017
+                                    L43.084549,30.1919994l18.9188995-12.0555992V49.1108017z M5.9965506,10h52.006897c2.2056007,0,4,1.7943001,4,4v1.7664003
+                                    L34.4677505,33.3134003c-1.4902,0.9492989-3.3935013,0.9199982-4.8495998-0.0703011L1.9965508,14.4694996V14
+                                    C1.9965508,11.7943001,3.7910507,10,5.9965506,10z M1.9965508,16.8852005L21.182251,29.9251003L1.9965508,49.1108017V16.8852005z
+                                    M58.0034485,54H5.9965506c-1.6473999,0-3.0638998-1.0021019-3.6760998-2.4278984l20.5199013-20.5200024l5.6547985,3.843401
+                                    c1.0859013,0.7383003,2.3418007,1.1083984,3.5995998,1.1083984c1.1953011,0,2.3925018-0.3339996,3.4463005-1.0048981
+                                    l5.8423996-3.7230015l20.2961006,20.2961025C61.0673485,52.9978981,59.6508713,54,58.0034485,54z"/>
+                            </svg>
+
+
                         </a>
                     </div>
                 </div>
             </div>
             <div class="bio">
                 <p>
-                    Data Engineer, skilled with Agentic AI, open for data based roles
+                    working on llm post training, open for data based roles
                 </p>
                 <a href="https://www.linkedin.com/in/pandeyps/details/certifications/" target="_blank" class="text-link">check certifications</a>
             </div>
         </header>
 
-        <section class="section">
+        <section id="work-highlights" class="content-section active">
             <h2 class="section-title">Work Highlights</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3>Derid</h3>
-                    <p>A lightweight tool that audits websites for crawlability by fetching robots.txt and metadata, ensuring accessibility for LLMs, AI tools, and improving SEO readiness.</p>
+                    <h3>Derid (10+ users)</h3>
+                    <p>A lightweight tool that audits websites for crawlability by robots.txt and metadata, checking access for LLMs, AI tools, and improving SEO.</p>
                     <div class="project-links">
                         <a href="https://derid.vercel.app" target="_blank" class="project-link"><i class="fas fa-globe"></i> Website</a>
                     </div>
@@ -76,14 +96,14 @@
                     <h3>Zempt (10+ users)</h3>
                     <p>This extension lets you instantly get simple explanations for any text you select on a webpage within the same page without disrupting your browsing.</p>
                     <div class="project-links">
-                        <a href="https://chromewebstore.google.com/detail/zempt/edohenoimgflmicmmgjpdjnfmgpibmdk?authuser=0&hl=en-GB" target="_blank" class="project-link"><i class="fas fa-globe"></i> Website</a>
+                        <a href="https://microsoftedge.microsoft.com/addons/detail/zempt/mmkngkompmnnklbnokedopbhhmfaocck" target="_blank" class="project-link"><i class="fas fa-globe"></i> Website</a>
                         <a href="https://github.com/prashantpandeygit/zempt-web-extension-derid" target="_blank" class="project-link"><i class="fab fa-github"></i> View Repo</a>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <h3>AntiSlopsquat (50+ Installs)</h3>
-                    <p>An open-source tool which saves your projects from hallucinated LLMs, typos, and suspicious sources to prevent slopsquatting and protect against malicious packages.</p>
+                    <p>An open-source python package which saves your projects from hallucinated and malicious package imports from LLMs.</p>
                     <div class="project-links">
                         <a href="https://antislopsquat.vercel.app/" target="_blank" class="project-link"><i class="fas fa-globe"></i> Website</a>
                         <a href="https://github.com/prashantpandeygit/antislopsquat" target="_blank" class="project-link"><i class="fab fa-github"></i> View Repo</a>
@@ -92,23 +112,39 @@
 
                 <div class="project-card">
                     <h3>AutoPulse</h3>
-                    <p>Real-time vehicle tracking and visualization system built using Google Cloud Pub/Sub, Apache Flink, and BigQuery. It streams live car telemetry, processes it for analytics, and visualizes movement paths on interactive maps.</p>
+                    <p>Real-time vehicle tracking and visualization system built using Pub/Sub, Flink, and BigQuery. Streams live car telemetry, visualizes movements on interactive map.</p>
                     <div class="project-links">
                         <a href="https://github.com/prashantpandeygit/autopulse" target="_blank" class="project-link"><i class="fab fa-github"></i> View Repo</a>
 
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <h3>QueryEase (20+ users)</h3>
-                    <p>Query Ease is a powerful and user-friendly application that bridges the gap between natural language and database queries. Empowering users to interact with data effortlessly.</p>
+                <div class="project-card initially-hidden">
+                    <h3>QueryEase</h3>
+                    <p>Query Ease is a user-friendly application that bridges the gap between natural language and database queries. Helping users to interact with data effortlessly.</p>
                     <div class="project-links">
                         <a href="https://query-ease-w0gl.onrender.com/" target="_blank" class="project-link"><i class="fas fa-globe"></i> Website</a>
                         <a href="https://github.com/prashantpandeygit/Query-Ease" target="_blank" class="project-link"><i class="fab fa-github"></i> View Repo</a>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card initially-hidden">
+                    <h3>VecMem</h3>
+                    <p>Local MCP server with a vector memory, providing memory layer to recall and relate past context for Claude desktop.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/prashantpandeygit/vecmem" target="_blank" class="project-link"><i class="fab fa-github"></i> View Repo</a>
+                    </div>
+                </div>
+
+                <div class="project-card initially-hidden">
+                    <h3>CCSafe</h3>
+                    <p>Automated pipeline that monitors card transactions in real time, flags suspicious activity, secures and shows insights through dashboard.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/prashantpandeygit/ccsafe" target="_blank" class="project-link"><i class="fab fa-github"></i> View Repo</a>
+                    </div>
+                </div>
+
+                <div class="project-card initially-hidden">
                     <h3>Fakeqlr</h3>
                     <p>Generate realistic fake data for your database testing and development needs. Configure fields, set parameters, and export in multiple formats.</p>
                     <div class="project-links">
@@ -117,8 +153,46 @@
                     </div>
                 </div>
 
+                <div class="project-card initially-hidden">
+                    <h3>Microchat</h3>
+                    <p>Electron based executable application for windows to interact with LLMs(customizable) locally without internet.</p>
+                    <div class="project-links">
+                        <a href="https://microchat.rictr.in/" target="_blank" class="project-link"><i class="fas fa-globe"></i> Website</a>
+                        <a href="https://github.com/prashantpandeygit/microchat" target="_blank" class="project-link"><i class="fab fa-github"></i> View Repo</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="show-more-container">
+                <button class="show-more-btn" id="show-more-btn">Show More Projects</button>
             </div>
         </section>
+
+        <section id="blogs" class="content-section">
+            <h2 class="section-title">Blogs</h2>
+            <div class="blog-list">
+                <div class="project-card">
+                    <h3>How Do LLMs Decide the Next Token?</h3>
+                    <p>Large Language Models (LLMs) like ChatGPT, Gemini, or Claude generate text one piece at a time. They don’t write full sentences in one go. Instead, they decide the next token, add it to the text, then repeat the process again and again until the response is complete ...</p>
+                    <div class="project-links">
+                        <a href="https://medium.com/@parkneurals/how-do-llms-decide-the-next-token-f2259ecf5a7c" target="_blank" class="project-link">
+                            <i class="fab fa-medium"></i> Read on Medium
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Understanding Artificial Neural Networks (ANNs): A Beginner's Guide</h3>
+                    <p>Artificial Neural Networks (ANNs) are one of the most important concepts in machine learning and artificial intelligence. Inspired by how the human brain works, ANNs are designed to recognize patterns, make predictions, and solve problems. This article explains ANNs in simple terms with formulas, diagrams, and examples ...</p>
+                    <div class="project-links">
+                        <a href="https://medium.com/@parkneurals/understanding-artificial-neural-networks-anns-a-beginners-guide-e17f9ddd435e" target="_blank" class="project-link">
+                            <i class="fab fa-medium"></i> Read on Medium
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
 
     <script src="script.js"></script>
