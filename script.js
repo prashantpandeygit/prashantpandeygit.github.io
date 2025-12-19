@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const removeLoading = () => {
+        document.body.classList.remove('loading');
+    };
+
+    if (document.readyState === 'complete') {
+        removeLoading();
+    } else {
+        window.addEventListener('load', removeLoading);
+    }
+
     const navItems = document.querySelectorAll('.nav-item');
     const contentSections = document.querySelectorAll('.content-section');
 

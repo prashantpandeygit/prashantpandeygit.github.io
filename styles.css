@@ -40,6 +40,17 @@ body {
     display: flex;
 }
 
+body.loading .container,
+body.loading .sidebar,
+body.loading .theme-toggle {
+    filter: blur(20px);
+    opacity: 0;
+}
+
+.container, .sidebar, .theme-toggle {
+    transition: filter 1s ease, opacity 1s ease;
+}
+
 .sidebar {
     position: fixed;
     left: 0;
@@ -100,10 +111,25 @@ main {
 
 .content-section {
     display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .content-section.active {
     display: block;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero {
