@@ -465,6 +465,12 @@ main {
         padding-top: 0;
     }
 
+    #blogs, #projects, #papers {
+        margin-top: 0;
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+    }
+
     .hero {
         flex-direction: column;
         text-align: center;
@@ -478,6 +484,10 @@ main {
 
     .social-links {
         justify-content: center;
+    }
+
+    .work-section-header {
+        display: none;
     }
 }
 
