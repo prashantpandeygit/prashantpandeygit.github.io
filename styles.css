@@ -40,12 +40,11 @@ body {
     display: flex;
 }
 
-/* Sidebar Styling */
 .sidebar {
     position: fixed;
     left: 0;
-    top: 0;
-    height: 100vh;
+    top: 12rem;
+    height: calc(100vh - 15rem);
     width: var(--sidebar-width);
     display: flex;
     flex-direction: column;
@@ -78,7 +77,6 @@ body {
     color: var(--nav-active);
 }
 
-/* Container & Main Content */
 .container {
     margin-left: var(--sidebar-width);
     width: 100%;
@@ -108,7 +106,6 @@ main {
     display: block;
 }
 
-/* Hero Section */
 .hero {
     display: flex;
     align-items: center;
@@ -200,7 +197,6 @@ main {
     opacity: 0.7;
 }
 
-/* Theme Toggle */
 .theme-toggle {
     position: fixed;
     top: 2rem;
@@ -215,8 +211,38 @@ main {
     color: var(--text-color);
 }
 
-/* Other Sections */
-/* Section Header with Line */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
 .work-section-header {
     display: flex;
     align-items: center;
@@ -248,7 +274,6 @@ main {
     background-color: #000000;
 }
 
-/* Projects Grid */
 .projects-grid-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -309,7 +334,6 @@ main {
     height: 16px;
 }
 
-/* Show More Projects */
 .show-more-container {
     margin-top: 2.5rem;
     border-bottom: 1px solid #333;
@@ -329,7 +353,6 @@ main {
     color: var(--text-color);
 }
 
-/* Blogs Section */
 .blog-list {
     display: flex;
     flex-direction: column;
@@ -385,7 +408,6 @@ main {
     text-decoration: underline;
 }
 
-/* Paper Badge Styling */
 .paper-item {
     position: relative;
 }
@@ -394,7 +416,7 @@ main {
     position: absolute;
     top: -2.5rem;
     left: 0;
-    background-color: #10b981; /* Green color from image */
+    background-color: #10b981;
     color: white;
     padding: 0.4rem 0.8rem;
     border-radius: 6px;
@@ -430,7 +452,6 @@ main {
     font-weight: 550;
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
     .hero {
         gap: 2rem;
@@ -447,17 +468,45 @@ main {
     }
 
     .sidebar {
-        position: relative;
+        position: fixed;
+        top: 2rem;
+        left: 2rem;
         height: auto;
-        width: 100%;
-        padding: 2rem;
+        width: auto;
+        padding: 0;
+        z-index: 1001;
         justify-content: flex-start;
     }
 
+    .hamburger {
+        display: flex;
+    }
+
     .sidebar-nav {
-        flex-direction: row;
-        flex-wrap: wrap;
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 5rem;
+        left: 2rem;
+        background-color: var(--bg-color);
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
         gap: 1.5rem;
+    }
+
+    [data-theme="light"] .sidebar-nav {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar-nav.open {
+        display: flex;
+    }
+
+    .nav-item {
+        padding-left: 0;
+        font-size: 1.1rem;
     }
 
     .container {
@@ -467,7 +516,7 @@ main {
 
     #blogs, #projects, #papers {
         margin-top: 0;
-        padding-top: 2rem;
+        padding-top: 6rem;
         padding-bottom: 4rem;
     }
 
@@ -475,6 +524,11 @@ main {
         flex-direction: column;
         text-align: center;
         gap: 2rem;
+        margin-top: 6rem;
+    }
+
+    #home .hero {
+        margin-top: 13rem;
     }
 
     .hero-image img {

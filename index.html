@@ -34,11 +34,16 @@
     </div>
 
     <div class="sidebar">
+        <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <nav class="sidebar-nav">
             <a href="#" class="nav-item active" data-section="home">Home</a>
             <a href="#" class="nav-item" data-section="projects">Work Highlights</a>
-            <a href="#" class="nav-item" data-section="papers">Papers</a>
             <a href="#" class="nav-item" data-section="blogs">Blogs</a>
+            <a href="#" class="nav-item" data-section="papers">Papers</a>
         </nav>
     </div>
 
@@ -250,20 +255,6 @@
                 </div>
             </section>
 
-            <section id="papers" class="content-section">
-                <div class="work-section-header">Papers</div>
-                <div class="blog-list">
-                    <div class="blog-item paper-item">
-                        <a href="https://arxiv.org/abs/2512.11851" target="_blank" class="paper-title-link">
-                            <h3>KV Cache Recycling to Expand Usable Context Capacity in Low Parameter LLMs
-                                <div class="paper-badge">under journal review</div>
-                            </h3>
-                        </a>
-                        <p>Whether attention key value (KV) states computed for one prompt for a small LLM can be reused to accelerate inference on a new similar prompt, giving an increase to the space to its context memory using token recycling.</p>
-                    </div>
-                </div>
-            </section>
-
             <section id="blogs" class="content-section">
                 <div class="work-section-header">Blogs</div>
                 <div class="blog-list">
@@ -287,7 +278,7 @@
                         <p>Large Language Models (LLMs) like ChatGPT, Gemini, or Claude generate text one piece at a time.
                             They don’t write full sentences in one go. Instead, they decide the next token, add it to the text,
                             then repeat the process again and again until the response is complete ...</p>
-                        <a href="https://medium.com/@parkneurals/how-do-llms-decide-the-next-token-f2259ecf5a7c"
+                        <a href="https://medium.com/@parkneurals/how-do-llms-decide the-next-token-f2259ecf5a7c"
                             target="_blank" class="blog-read-more">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path
@@ -311,6 +302,20 @@
                             </svg>
                             Read on Medium
                         </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="papers" class="content-section">
+                <div class="work-section-header">Papers</div>
+                <div class="blog-list">
+                    <div class="blog-item paper-item">
+                        <a href="https://arxiv.org/abs/2512.11851" target="_blank" class="paper-title-link">
+                            <h3>KV Cache Recycling to Expand Usable Context Capacity in Low Parameter LLMs
+                                <div class="paper-badge">under journal review</div>
+                            </h3>
+                        </a>
+                        <p>Whether attention key value (KV) states computed for one prompt for a small LLM can be reused to accelerate inference on a new similar prompt, giving an increase to the space to its context memory using token recycling.</p>
                     </div>
                 </div>
             </section>

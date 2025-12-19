@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Navigation Logic
     const navItems = document.querySelectorAll('.nav-item');
     const contentSections = document.querySelectorAll('.content-section');
 
@@ -7,11 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
         item.addEventListener('click', (e) => {
             e.preventDefault();
 
-            // Update active nav item
             navItems.forEach(nav => nav.classList.remove('active'));
             item.classList.add('active');
 
-            // Show corresponding section
             const targetSectionId = item.getAttribute('data-section');
             contentSections.forEach(section => {
                 section.classList.remove('active');
@@ -19,10 +16,26 @@ document.addEventListener('DOMContentLoaded', function () {
                     section.classList.add('active');
                 }
             });
+
+            const hamburger = document.getElementById('hamburger-menu');
+            const sidebarNav = document.querySelector('.sidebar-nav');
+            if (sidebarNav.classList.contains('open')) {
+                sidebarNav.classList.remove('open');
+                hamburger.classList.remove('active');
+            }
         });
     });
 
-    // Age Counter Logic
+    const hamburger = document.getElementById('hamburger-menu');
+    const sidebarNav = document.querySelector('.sidebar-nav');
+
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            sidebarNav.classList.toggle('open');
+        });
+    }
+
     const ageCounter = document.getElementById('age-counter');
     const birthDate = new Date('2005-02-26T00:00:00');
 
@@ -38,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
         updateAge();
     }
 
-    // Theme Toggle Logic
     const themeBtn = document.getElementById('theme-toggle-btn');
     const moonIcon = document.getElementById('moon-icon');
     const sunIcon = document.getElementById('sun-icon');
