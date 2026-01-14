@@ -9,30 +9,42 @@ document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('load', removeLoading);
     }
 
-    const navItems = document.querySelectorAll('.nav-item');
+    // Check if we're on the home page (has multiple sections)
     const contentSections = document.querySelectorAll('.content-section');
+    const isHomePage = contentSections.length > 1;
+
+    const navItems = document.querySelectorAll('.nav-item');
 
     navItems.forEach(item => {
         item.addEventListener('click', (e) => {
-            e.preventDefault();
+            const href = item.getAttribute('href');
+            const targetSection = item.getAttribute('data-section');
 
-            navItems.forEach(nav => nav.classList.remove('active'));
-            item.classList.add('active');
-
-            const targetSectionId = item.getAttribute('data-section');
-            contentSections.forEach(section => {
-                section.classList.remove('active');
-                if (section.id === targetSectionId) {
-                    section.classList.add('active');
-                }
-            });
-
+            // Close mobile menu first
             const hamburger = document.getElementById('hamburger-menu');
             const sidebarNav = document.querySelector('.sidebar-nav');
-            if (sidebarNav.classList.contains('open')) {
+            if (sidebarNav && sidebarNav.classList.contains('open')) {
                 sidebarNav.classList.remove('open');
                 hamburger.classList.remove('active');
             }
+
+            // If on home page and clicking home, handle locally
+            if (isHomePage && targetSection === 'home') {
+                e.preventDefault();
+                navItems.forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === 'home') {
+                        section.classList.add('active');
+                    }
+                });
+                return;
+            }
+
+            // For other sections or navigation, let the browser handle the link
+            // The href will navigate to the appropriate route
         });
     });
 
@@ -61,19 +73,30 @@ document.addEventListener('DOMContentLoaded', function () {
         updateAge();
     }
 
+    // Theme toggle with localStorage persistence
     const themeBtn = document.getElementById('theme-toggle-btn');
     const moonIcon = document.getElementById('moon-icon');
     const sunIcon = document.getElementById('sun-icon');
     const body = document.body;
 
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        body.setAttribute('data-theme', 'light');
+        if (moonIcon) moonIcon.style.display = 'none';
+        if (sunIcon) sunIcon.style.display = 'block';
+    }
+
     if (themeBtn) {
         themeBtn.addEventListener('click', () => {
             if (body.hasAttribute('data-theme')) {
                 body.removeAttribute('data-theme');
+                localStorage.removeItem('theme');
                 moonIcon.style.display = 'block';
                 sunIcon.style.display = 'none';
             } else {
                 body.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
                 moonIcon.style.display = 'none';
                 sunIcon.style.display = 'block';
             }
