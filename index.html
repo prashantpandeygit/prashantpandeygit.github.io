@@ -58,7 +58,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body class="loading">
+<body class="loading home-page">
     <div class="theme-toggle" id="theme-toggle-btn">
         <svg id="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -78,19 +78,18 @@
         </svg>
     </div>
 
-    <div class="sidebar">
+    <nav class="top-navbar">
+        <div class="nav-links">
+            <a href="/blogs/" class="nav-item" data-section="blogs">blog</a>
+            <a href="/projects/" class="nav-item" data-section="projects">work</a>
+            <a href="/papers/" class="nav-item" data-section="papers">papers</a>
+        </div>
         <button class="hamburger" id="hamburger-menu" aria-label="Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
-        <nav class="sidebar-nav">
-            <a href="/" class="nav-item active" data-section="home">Home</a>
-            <a href="/projects/" class="nav-item" data-section="projects">Work Highlights</a>
-            <a href="/blogs/" class="nav-item" data-section="blogs">Blogs</a>
-            <a href="/papers/" class="nav-item" data-section="papers">Papers</a>
-        </nav>
-    </div>
+    </nav>
 
     <div class="container">
         <main>

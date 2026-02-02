@@ -59,7 +59,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body class="loading">
+<body class="loading projects-page">
     <div class="theme-toggle" id="theme-toggle-btn">
         <svg id="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -79,122 +79,105 @@
         </svg>
     </div>
 
-    <div class="sidebar">
+    <nav class="top-navbar">
+        <a href="/" class="nav-back" aria-label="Back to home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-arrow-left">
+                <path d="m12 19-7-7 7-7" />
+                <path d="M19 12H5" />
+            </svg>
+        </a>
+        <div class="nav-links">
+            <a href="/blogs/" class="nav-item" data-section="blogs">blog</a>
+            <a href="/projects/" class="nav-item active" data-section="projects">work</a>
+            <a href="/papers/" class="nav-item" data-section="papers">papers</a>
+        </div>
         <button class="hamburger" id="hamburger-menu" aria-label="Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
-        <nav class="sidebar-nav">
-            <a href="/" class="nav-item" data-section="home">Home</a>
-            <a href="/projects/" class="nav-item active" data-section="projects">Work Highlights</a>
-            <a href="/blogs/" class="nav-item" data-section="blogs">Blogs</a>
-            <a href="/papers/" class="nav-item" data-section="papers">Papers</a>
-        </nav>
-    </div>
+    </nav>
 
-    <div class="container">
-        <main>
-            <section id="projects" class="content-section active">
-                <div class="work-section-header">Work Highlights</div>
-                <div class="projects-grid-container">
+    <main class="projects-page">
+        <section id="projects" class="content-section active">
+            <div class="projects-list-container">
+                <span class="last-updated">Last updated: Jan 2026</span>
 
-                    <div class="project-item">
-                        <h3>rictr</h3>
-                        <p>Knowledge distillation library for PyTorch, making it easy to compress and transfer knowledge
-                            between neural networks.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/prashantpandeygit/rictr" target="_blank" class="project-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                    </path>
-                                </svg>
-                                View Repo
-                            </a>
+                <div class="project-section">
+                    <h2 class="project-section-header">PROJECTS</h2>
+                    <div class="project-list">
+                        <div class="project-line">
+                            <a href="https://github.com/prashantpandeygit/dViT" target="_blank"
+                                class="project-name">Dynamic ViT</a>
+                            <span class="project-separator">-</span>
+                            <span class="project-desc">Dynamic Vision Transformer that is 2.27x faster than standard
+                                ViT.</span>
+                        </div>
+                        <div class="project-line">
+                            <a href="https://github.com/prashantpandeygit/rictr" target="_blank"
+                                class="project-name">RictrLab</a>
+                            <span class="project-separator">-</span>
+                            <span class="project-desc">Research solutions and knowledge distillation library for
+                                PyTorch.</span>
                         </div>
                     </div>
-
-                    <div class="project-item">
-                        <h3>dViT</h3>
-                        <p>Dynamic Vision Transformer that is 2.27x faster than standard Vision Transformer. dViT avoids
-                            unnecessary compute by switching between high and low resolution during inference.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/prashantpandeygit/dViT" target="_blank" class="project-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                    </path>
-                                </svg>
-                                View Repo
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <h3>Derid (10+ users)</h3>
-                        <p>A lightweight tool that audits websites for crawlability by robots.txt and metadata, checking
-                            access for LLMs, AI tools, and improving SEO.</p>
-                        <div class="project-links">
-                            <a href="https://derid.vercel.app" target="_blank" class="project-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                                    <path
-                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                                    </path>
-                                </svg>
-                                Website
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <h3>AntiSlopsquat (50+ Installs)</h3>
-                        <p>An open-source python package which saves your projects from hallucinated and malicious
-                            package imports from LLMs.</p>
-                        <div class="project-links">
-                            <a href="https://antislopsquat.vercel.app/" target="_blank" class="project-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                                    <path
-                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                                    </path>
-                                </svg>
-                                Website
-                            </a>
-                            <a href="https://github.com/prashantpandeygit/antislopsquat" target="_blank"
-                                class="project-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                    </path>
-                                </svg>
-                                View Repo
-                            </a>
-                        </div>
-                    </div>
-
                 </div>
 
-                <div class="show-more-container">
-                    <a href="https://github.com/prashantpandeygit?tab=repositories" target="_blank"
-                        class="show-more-link">Show More Projects ↗</a>
+                <div class="project-section">
+                    <h2 class="project-section-header">PAPER IMPLEMENTATIONS</h2>
+                    <div class="project-list">
+                        <div class="project-line">
+                            <a href="https://github.com/prashantpandeygit/solvingpapers/tree/main/vision%20transformer"
+                                target="_blank" class="project-name">Vision Transformer</a>
+                            <span class="project-separator">-</span>
+                            <span class="project-desc">Vision Transformer implementation from scratch.</span>
+                        </div>
+                        <div class="project-line">
+                            <a href="https://github.com/prashantpandeygit/solvingpapers/tree/main/knowledge%20distillation"
+                                target="_blank" class="project-name">Knowledge Distillation</a>
+                            <span class="project-separator">-</span>
+                            <span class="project-desc">Knowledge distillation implementation in PyTorch.</span>
+                        </div>
+                        <div class="project-line">
+                            <a href="https://github.com/prashantpandeygit/solvingpapers/tree/main/activation%20functions"
+                                target="_blank" class="project-name">Activation Functions</a>
+                            <span class="project-separator">-</span>
+                            <span class="project-desc">Notebooks for ReLU, GELU, and more.</span>
+                        </div>
+                    </div>
                 </div>
-            </section>
-        </main>
-    </div>
+
+                <div class="project-section">
+                    <h2 class="project-section-header">MINI PROJECTS</h2>
+                    <div class="project-list">
+                        <div class="project-line">
+                            <a href="https://microsoftedge.microsoft.com/addons/detail/zempt/mmkngkompmnnklbnokedopbhhmfaocck"
+                                target="_blank" class="project-name">Zempt</a>
+                            <span class="project-separator">-</span>
+                            <span class="project-desc">Get explanations for text you select on a webpage
+                                within the same page.</span>
+                        </div>
+                        <div class="project-line">
+                            <a href="https://query-ease-w0gl.onrender.com/" target="_blank"
+                                class="project-name">QueryEase</a>
+                            <span class="project-separator">-</span>
+                            <span class="project-desc">Use natural language to query with a database.</span>
+                        </div>
+                        <div class="project-line">
+                            <a href="https://github.com/prashantpandeygit/denot" target="_blank"
+                                class="project-name">Denot</a>
+                            <span class="project-separator">-</span>
+                            <span class="project-desc">Language model from scratch on a pair dataset, adding techniques
+                                to achieve no hallucinations.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
 
     <script src="../script.js"></script>
 </body>

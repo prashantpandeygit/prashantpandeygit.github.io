@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('load', removeLoading);
     }
 
-    // Check if we're on the home page (has multiple sections)
+
     const contentSections = document.querySelectorAll('.content-section');
     const isHomePage = contentSections.length > 1;
 
@@ -20,15 +20,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const href = item.getAttribute('href');
             const targetSection = item.getAttribute('data-section');
 
-            // Close mobile menu first
+
             const hamburger = document.getElementById('hamburger-menu');
-            const sidebarNav = document.querySelector('.sidebar-nav');
-            if (sidebarNav && sidebarNav.classList.contains('open')) {
-                sidebarNav.classList.remove('open');
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks && navLinks.classList.contains('open')) {
+                navLinks.classList.remove('open');
                 hamburger.classList.remove('active');
             }
 
-            // If on home page and clicking home, handle locally
+
             if (isHomePage && targetSection === 'home') {
                 e.preventDefault();
                 navItems.forEach(nav => nav.classList.remove('active'));
@@ -43,20 +43,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            // For other sections or navigation, let the browser handle the link
-            // The href will navigate to the appropriate route
+
+
         });
     });
 
     const hamburger = document.getElementById('hamburger-menu');
-    const sidebarNav = document.querySelector('.sidebar-nav');
+    const navLinks = document.querySelector('.nav-links');
 
     if (hamburger) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
-            sidebarNav.classList.toggle('open');
+            navLinks.classList.toggle('open');
         });
     }
+
 
     const ageCounter = document.getElementById('age-counter');
     const birthDate = new Date('2005-02-26T00:00:00');
@@ -73,13 +74,13 @@ document.addEventListener('DOMContentLoaded', function () {
         updateAge();
     }
 
-    // Theme toggle with localStorage persistence
+
     const themeBtn = document.getElementById('theme-toggle-btn');
     const moonIcon = document.getElementById('moon-icon');
     const sunIcon = document.getElementById('sun-icon');
     const body = document.body;
 
-    // Load saved theme
+
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light') {
         body.setAttribute('data-theme', 'light');
@@ -102,4 +103,65 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+
+    const codeBlocks = document.querySelectorAll('.blog-post-content pre');
+    codeBlocks.forEach(pre => {
+
+        const button = document.createElement('button');
+        button.className = 'copy-code-btn';
+        button.setAttribute('aria-label', 'Copy code');
+        button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-copy">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+            </svg>
+        `;
+
+
+        pre.appendChild(button);
+
+
+        button.addEventListener('click', () => {
+            const code = pre.querySelector('code');
+            const textToCopy = code ? code.innerText : pre.innerText;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+
+                const originalIcon = button.innerHTML;
+                button.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-check">
+                        <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                `;
+                button.style.color = '#4ade80';
+
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                    button.style.color = '';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy code: ', err);
+            });
+        });
+    });
+
+
+    function addLightModeNote() {
+        if (!window.location.pathname.includes('/blogs/')) return;
+
+        const header = document.querySelector('.blog-post-header');
+        if (header) {
+            const note = document.createElement('div');
+            note.className = 'light-mode-note';
+            note.textContent = 'Recommended: Read in Light Mode';
+            header.insertBefore(note, header.firstChild);
+        }
+    }
+
+    addLightModeNote();
 });

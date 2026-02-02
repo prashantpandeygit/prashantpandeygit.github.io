@@ -83,8 +83,6 @@
     <div class="container">
         <main>
             <article class="blog-post-container">
-
-
                 <header class="blog-post-header">
                     <h1 class="blog-post-title">Implementing DeepSeek-OCR on Google Colab</h1>
                     <div class="blog-post-meta">
@@ -92,7 +90,6 @@
                         <span>Nov 20, 2025</span>
                     </div>
                 </header>
-
 
                 <img src="cover.png" alt="DeepSeek OCR Cover" style="width: 100%; margin-bottom: 1.5rem;">
 
@@ -198,8 +195,6 @@ output_path = f'/content/outputs/page_{page_number}'</code></pre>
                     <p>trigger the model, and then the output is ready!:</p>
 
                     <pre><code class="language-python">model.infer(tokenizer, prompt=prompt, image_file=image_file, output_path = output_path, base_size = 1024, image_size = 1024, crop_mode=False, save_results = True, test_compress = True)</code></pre>
-
-
 
                     <p><strong>also refer to the complete notebook implementation:</strong> <a
                             href="https://colab.research.google.com/drive/1dLaxvsch-8yGG25CIeJOe_YfMwSOOaJS?usp=sharing"

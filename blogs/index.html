@@ -79,93 +79,81 @@
         </svg>
     </div>
 
-    <div class="sidebar">
+    <nav class="top-navbar">
+        <a href="/" class="nav-back" aria-label="Back to home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-arrow-left">
+                <path d="m12 19-7-7 7-7" />
+                <path d="M19 12H5" />
+            </svg>
+        </a>
+        <div class="nav-links">
+            <a href="/blogs/" class="nav-item active" data-section="blogs">blog</a>
+            <a href="/projects/" class="nav-item" data-section="projects">work</a>
+            <a href="/papers/" class="nav-item" data-section="papers">papers</a>
+        </div>
         <button class="hamburger" id="hamburger-menu" aria-label="Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
-        <nav class="sidebar-nav">
-            <a href="/" class="nav-item" data-section="home">Home</a>
-            <a href="/projects/" class="nav-item" data-section="projects">Work Highlights</a>
-            <a href="/blogs/" class="nav-item active" data-section="blogs">Blogs</a>
-            <a href="/papers/" class="nav-item" data-section="papers">Papers</a>
-        </nav>
-    </div>
+    </nav>
 
-    <div class="container">
-        <main>
+    <div class="container blog-container">
+        <main style="max-width: 100%; width: 100%;">
             <section id="blogs" class="content-section active">
-                <div class="work-section-header">Blogs</div>
-                <div class="blog-list">
-                    <div class="blog-item">
-                        <h3>Dynamic Vision Transformer: Faster Inference Without Extra Training</h3>
-                        <p>Vision Transformers usually run at a fixed image resolution.
-                            Easy images still go through the full high-resolution pipeline, wasting time and compute.
-                            In this post, I explain a Dynamic Vision Transformer that adapts resolution only at
-                            inference time. The model starts with low resolution ...</p>
-                        <a href="https://parkneurals.medium.com/dynamic-resolution-vision-transformer-faster-inference-without-extra-training-e6ce515c712d"
-                            target="_blank" class="blog-read-more">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.82 6.82 0 010 12a6.82 6.82 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" />
-                            </svg>
-                            Read on Medium
-                        </a>
-                    </div>
+                <div class="blog-cards-grid">
+                    <a href="/blogs/dynamic-vision-transformer/" class="blog-card">
+                        <div class="blog-card-image">
+                            <img src="/blogs/dynamic-vision-transformer/topcover.png" alt="Dynamic Vision Transformer">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-date">Jan 10, 2026</div>
+                            <h3 class="blog-card-title">Dynamic Vision Transformer: Faster Inference</h3>
+                            <p class="blog-card-excerpt">Vision Transformers usually run at a fixed image resolution.
+                                Easy images still go through the full high-resolution pipeline, wasting time and
+                                compute...</p>
+                        </div>
+                    </a>
 
-                    <div class="blog-item">
-                        <h3>Implementing DeepSeek-OCR on Google Colab</h3>
-                        <p>DeepSeek recently released DeepSeek-OCR, the research paper of it focuses on vision text
-                            compression,
-                            the model can decode thousands of text tokens from few hundred vision tokens. I wanted to
-                            test this,
-                            so I set up a small Colab pipeline to see how well it works ...</p>
-                        <a href="https://medium.com/@parkneurals/implementing-deepseek-ocr-on-google-colab-0ec9a9c9862b"
-                            target="_blank" class="blog-read-more">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.82 6.82 0 010 12a6.82 6.82 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" />
-                            </svg>
-                            Read on Medium
-                        </a>
-                    </div>
+                    <a href="/blogs/deepseek-ocr/" class="blog-card">
+                        <div class="blog-card-image">
+                            <img src="/blogs/deepseek-ocr/cover.png" alt="DeepSeek OCR">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-date">Nov 20, 2025</div>
+                            <h3 class="blog-card-title">Implementing DeepSeek-OCR on Google Colab</h3>
+                            <p class="blog-card-excerpt">DeepSeek recently released DeepSeek-OCR, the research paper
+                                focuses on vision text compression, the model can decode thousands of text tokens from
+                                few hundred vision tokens...</p>
+                        </div>
+                    </a>
 
-                    <div class="blog-item">
-                        <h3>How Do LLMs Decide the Next Token?</h3>
-                        <p>Large Language Models (LLMs) like ChatGPT, Gemini, or Claude generate text one piece at a
-                            time.
-                            They don't write full sentences in one go. Instead, they decide the next token, add it to
-                            the text,
-                            then repeat the process again and again until the response is complete ...</p>
-                        <a href="https://medium.com/@parkneurals/how-do-llms-decide the-next-token-f2259ecf5a7c"
-                            target="_blank" class="blog-read-more">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.82 6.82 0 010 12a6.82 6.82 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" />
-                            </svg>
-                            Read on Medium
-                        </a>
-                    </div>
+                    <a href="/blogs/llm-next-token/" class="blog-card">
+                        <div class="blog-card-image">
+                            <img src="/blogs/llm-next-token/cover.png" alt="LLM Next Token">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-date">Sep 20, 2025</div>
+                            <h3 class="blog-card-title">How Do LLMs Decide the Next Token?</h3>
+                            <p class="blog-card-excerpt">Large Language Models (LLMs) like ChatGPT, Gemini, or Claude
+                                generate text one piece at a time. They don't write full sentences in one go...</p>
+                        </div>
+                    </a>
 
-                    <div class="blog-item">
-                        <h3>Understanding Artificial Neural Networks (ANNs): A Beginner's Guide</h3>
-                        <p>Artificial Neural Networks (ANNs) are one of the most important concepts in machine learning
-                            and
-                            artificial intelligence. Inspired by how the human brain works, ANNs are designed to
-                            recognize
-                            patterns, make predictions, and solve problems. This article explains ANNs in simple terms
-                            with
-                            formulas, diagrams, and examples ...</p>
-                        <a href="https://medium.com/@parkneurals/understanding-artificial-neural-networks-anns-a-beginners-guide-e17f9ddd435e"
-                            target="_blank" class="blog-read-more">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.82 6.82 0 010 12a6.82 6.82 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" />
-                            </svg>
-                            Read on Medium
-                        </a>
-                    </div>
+                    <a href="/blogs/understanding-ann/" class="blog-card">
+                        <div class="blog-card-image">
+                            <img src="/blogs/understanding-ann/cover.png" alt="Understanding ANN">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-date">Jan 30, 2025</div>
+                            <h3 class="blog-card-title">Understanding Artificial Neural Networks (ANNs): A Beginner's
+                                Guide</h3>
+                            <p class="blog-card-excerpt">Artificial Neural Networks (ANNs) are one of the most important
+                                concepts in machine learning and artificial intelligence...</p>
+                        </div>
+                    </a>
                 </div>
             </section>
         </main>
