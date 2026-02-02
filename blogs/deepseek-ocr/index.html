@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <meta name="keywords"
+        content="Prashant Pandey, DeepSeek, OCR, Google Colab, vision language model, text compression">
+    <meta name="language" content="English">
+    <title>Implementing DeepSeek-OCR on Google Colab | Prashant Pandey</title>
+    <meta name="description"
+        content="DeepSeek recently released DeepSeek-OCR, the research paper of it focuses on vision text compression, the model can decode thousands of text tokens from few hundred vision tokens.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://prashantpandeygit.github.io/blogs/deepseek-ocr/">
+    <meta property="og:title" content="Implementing DeepSeek-OCR on Google Colab">
+    <meta property="og:description"
+        content="DeepSeek recently released DeepSeek-OCR, the research paper of it focuses on vision text compression, the model can decode thousands of text tokens from few hundred vision tokens.">
+    <meta property="og:image" content="https://prashantpandeygit.github.io/assets/card.png">
+    <meta property="og:site_name" content="Prashant Pandey Portfolio">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Implementing DeepSeek-OCR on Google Colab">
+    <meta property="twitter:description"
+        content="DeepSeek recently released DeepSeek-OCR, the research paper of it focuses on vision text compression, the model can decode thousands of text tokens from few hundred vision tokens.">
+    <meta property="twitter:image" content="https://prashantpandeygit.github.io/assets/card.png">
+
+    <meta name="author" content="Prashant Pandey">
+    <link rel="canonical" href="https://prashantpandeygit.github.io/blogs/deepseek-ocr/">
+
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+</head>
+
+<body class="loading">
+    <div class="theme-toggle" id="theme-toggle-btn">
+        <svg id="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg id="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </div>
+
+    <nav class="top-navbar">
+        <a href="/blogs/" class="nav-back" aria-label="Back to blogs">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-arrow-left">
+                <path d="m12 19-7-7 7-7" />
+                <path d="M19 12H5" />
+            </svg>
+        </a>
+
+        <div class="nav-links">
+            <a href="/blogs/" class="nav-item active" data-section="blogs">blog</a>
+            <a href="/projects/" class="nav-item" data-section="projects">work</a>
+            <a href="/papers/" class="nav-item" data-section="papers">papers</a>
+        </div>
+        <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <div class="container">
+        <main>
+            <article class="blog-post-container">
+
+
+                <header class="blog-post-header">
+                    <h1 class="blog-post-title">Implementing DeepSeek-OCR on Google Colab</h1>
+                    <div class="blog-post-meta">
+                        <span>By Prashant Pandey</span>
+                        <span>Nov 20, 2025</span>
+                    </div>
+                </header>
+
+
+                <img src="cover.png" alt="DeepSeek OCR Cover" style="width: 100%; margin-bottom: 1.5rem;">
+
+                <div class="blog-post-content">
+                    <p>DeepSeek recently released <strong>DeepSeek-OCR</strong>, the research paper of it focuses on
+                        vision text
+                        compression, the model can decode thousands of text tokens from few hundred vision tokens. I
+                        wanted to test this, so I set up a small Colab pipeline to see how well it works.</p>
+
+                    <img src="1.png" alt="DeepSeek OCR" style="width: 100%; margin-bottom: 1.5rem;">
+
+                    <h4>DeepSeek-OCR</h4>
+
+                    <p>It's an end-to-end model built around a custom <em>DeepEncoder</em> plus a MoE-based decoder and
+                        is
+                        designed to compress visual input aggressively while keeping text reconstruction accurate.</p>
+
+                    <p>From the paper's experiments, the model can hit around <strong>97% precision at about 10×
+                            vision-text
+                            compression</strong>, which is pretty wild for an OCR system.</p>
+
+                    <p>Below is my approach used:</p>
+
+                    <h4>Setting Up the Environment in Colab</h4>
+
+                    <p>dependencies used:</p>
+                    <ul>
+                        <li><em>transformers</em><strong> </strong> for loading the DeepSeek model</li>
+                        <li><em>bitsandbytes</em> for quantization</li>
+                        <li><em>pdf2image + poppler </em>to turn pdf pages into images</li>
+                    </ul>
+
+                    <p>Here's the installation block:</p>
+
+                    <pre><code class="language-python">!pip install addict transformers==4.46.3 tokenizers==0.20.3 pdf2image
+!pip install --no-deps -q bitsandbytes
+!apt install poppler-utils</code></pre>
+
+                    <p>I quantized the model using 4-bit NF4 to keep it lightweight making it useful on Colab T4 and
+                        even more so on A100 sessions.</p>
+
+                    <h4>Converting the PDF into Page Images</h4>
+
+                    <pre><code class="language-python">from pdf2image import convert_from_path</code></pre>
+
+                    <p>creating directories for the pdf and for output pages:</p>
+
+                    <pre><code class="language-python">import os
+os.makedirs("outputs", exist_ok=True)
+os.makedirs("pdf_pages", exist_ok=True)</code></pre>
+
+                    <p>then creating a variable for the pdf and convert the pdf pages to images and store it in the
+                        <em>pdf_pages</em> directory.
+                    </p>
+
+                    <pre><code class="language-python">pdf_file = 'csc.pdf'
+images = convert_from_path(pdf_file)
+for i, image in enumerate(images):
+    image.save(f'/content/pdf_pages/page_{i+1}.jpg', 'JPEG')</code></pre>
+
+                    <h4>Loading the DeepSeek-OCR Model</h4>
+
+                    <p>The model loads directly via Hugging Face with <code>trust_remote_code=True</code> since DeepSeek
+                        ships a custom <code>infer()</code> function, also then quantize the model to 4-bit
+                        configuration, also going forward colab will map the model into the CPU or GPU as per
+                        availability.</p>
+
+                    <pre><code class="language-python">from transformers import AutoModel, AutoTokenizer, BitsAndBytesConfig
+
+model_name = 'deepseek-ai/DeepSeek-OCR'
+quantconfig = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_use_double_quant=True,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_compute_dtype=torch.float
+)
+
+tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+model = AutoModel.from_pretrained(
+    model_name,
+    trust_remote_code=True,
+    use_safetensors=True,
+    device_map="auto",
+    quantization_config=quantconfig,
+    torch_dtype=torch.float
+)
+model = model.eval()</code></pre>
+
+                    <p>The paper mentions the model activates about 570M parameters at inference but because of MoE
+                        routing, running the model in 4-bit is possible with colab.</p>
+
+                    <h4>Running OCR on a Page</h4>
+
+                    <pre><code class="language-python">page_number = 3
+prompt = "&lt;image&gt;\nParse the image."
+image_file = f'/content/pdf_pages/page_{page_number}.jpg'
+output_path = f'/content/outputs/page_{page_number}'</code></pre>
+
+                    <p>Using <code>infer()</code> the image preprocessing, resizing to resolution, passing vision
+                        tokens, decoding the text and saving outputs is handled automatically, making the OCR-model with
+                        zero custom post-processing.</p>
+
+                    <p>trigger the model, and then the output is ready!:</p>
+
+                    <pre><code class="language-python">model.infer(tokenizer, prompt=prompt, image_file=image_file, output_path = output_path, base_size = 1024, image_size = 1024, crop_mode=False, save_results = True, test_compress = True)</code></pre>
+
+
+
+                    <p><strong>also refer to the complete notebook implementation:</strong> <a
+                            href="https://colab.research.google.com/drive/1dLaxvsch-8yGG25CIeJOe_YfMwSOOaJS?usp=sharing"
+                            target="_blank">https://colab.research.google.com/drive/1dLaxvsch-8yGG25CIeJOe_YfMwSOOaJS?usp=sharing</a>
+                    </p>
+
+                    <p><strong>for deepseek-ocr paper:</strong><br><a href="https://arxiv.org/abs/2510.18234"
+                            target="_blank">[2510.18234]
+                            DeepSeek-OCR: Contexts Optical Compression</a></p>
+                </div>
+
+                <div class="blog-post-tags">
+                    <span class="blog-post-tag">ocr</span>
+                    <span class="blog-post-tag">deepseek</span>
+                    <span class="blog-post-tag">vision-language-model</span>
+                    <span class="blog-post-tag">compression-techniques</span>
+                </div>
+            </article>
+        </main>
+    </div>
+
+    <script src="../../script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <meta name="keywords"
+        content="Prashant Pandey, artificial neural networks, ANN, deep learning, machine learning, neurons, backpropagation">
+    <meta name="language" content="English">
+    <title>Understanding Artificial Neural Networks (ANNs): A Beginner's Guide | Prashant Pandey</title>
+    <meta name="description"
+        content="Artificial Neural Networks (ANNs) are one of the most important concepts in machine learning and artificial intelligence. Inspired by how the human brain works, ANNs are designed to recognize patterns, make predictions, and solve problems.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://prashantpandeygit.github.io/blogs/understanding-ann/">
+    <meta property="og:title" content="Understanding Artificial Neural Networks (ANNs): A Beginner's Guide">
+    <meta property="og:description"
+        content="Artificial Neural Networks (ANNs) are one of the most important concepts in machine learning and artificial intelligence. Inspired by how the human brain works, ANNs are designed to recognize patterns, make predictions, and solve problems.">
+    <meta property="og:image" content="https://prashantpandeygit.github.io/assets/card.png">
+    <meta property="og:site_name" content="Prashant Pandey Portfolio">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Understanding Artificial Neural Networks (ANNs): A Beginner's Guide">
+    <meta property="twitter:description"
+        content="Artificial Neural Networks (ANNs) are one of the most important concepts in machine learning and artificial intelligence. Inspired by how the human brain works, ANNs are designed to recognize patterns, make predictions, and solve problems.">
+    <meta property="twitter:image" content="https://prashantpandeygit.github.io/assets/card.png">
+
+    <meta name="author" content="Prashant Pandey">
+    <link rel="canonical" href="https://prashantpandeygit.github.io/blogs/understanding-ann/">
+
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+
+<body class="loading">
+    <div class="theme-toggle" id="theme-toggle-btn">
+        <svg id="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg id="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </div>
+
+    <nav class="top-navbar">
+        <a href="/blogs/" class="nav-back" aria-label="Back to blogs">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-arrow-left">
+                <path d="m12 19-7-7 7-7" />
+                <path d="M19 12H5" />
+            </svg>
+        </a>
+        <div class="nav-links">
+            <a href="/blogs/" class="nav-item active" data-section="blogs">blog</a>
+            <a href="/projects/" class="nav-item" data-section="projects">work</a>
+            <a href="/papers/" class="nav-item" data-section="papers">papers</a>
+        </div>
+        <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <div class="container">
+        <main>
+            <article class="blog-post-container">
+
+
+                <header class="blog-post-header">
+                    <h1 class="blog-post-title">Understanding Artificial Neural Networks (ANNs): A Beginner's Guide</h1>
+                    <div class="blog-post-meta">
+                        <span>By Prashant Pandey</span>
+                        <span>Jan 30, 2025</span>
+                    </div>
+                </header>
+
+
+                <img src="cover.png" alt="Understanding Artificial Neural Networks Cover"
+                    style="width: 100%; margin-bottom: 1.5rem;">
+
+                <div class="blog-post-content">
+                    <p>Artificial Neural Networks (ANNs) are one of the most important concepts in machine learning and
+                        artificial intelligence. Inspired by how the human brain works, ANNs are designed to recognize
+                        patterns, make predictions, and solve problems. This article explains ANNs in simple terms with
+                        formulas, diagrams, and examples.</p>
+
+                    <h3>What Is an Artificial Neural Network?</h3>
+
+                    <p>An artificial neural network is a system of algorithms that tries to mimic the way the human
+                        brain processes information. It consists of:</p>
+
+                    <ol>
+                        <li><strong>Input Layer</strong></li>
+                        <li><strong>Hidden Layers</strong></li>
+                        <li><strong>Output Layer</strong></li>
+                    </ol>
+
+                    <p>Each part of the ANN is made up of <strong>neurons</strong>, which are small units that work
+                        together to solve
+                        problems.</p>
+
+                    <img src="1.png" alt="ANN Structure">
+
+
+
+                    <h3>How Does ANN Work?</h3>
+
+                    <h4>1. The Structure of a Neuron</h4>
+
+                    <p><strong>Output of a neuron:</strong></p>
+                    <ul>
+                        <li>: Inputs to the neuron</li>
+                        <li>: Weights for each input</li>
+                        <li>: Bias</li>
+                        <li>: Activation function</li>
+                    </ul>
+
+
+
+                    <h4>2. Weights and Bias</h4>
+
+                    <ul>
+                        <li><strong>Weights</strong> determine the importance of each input.</li>
+                        <li><strong>Bias</strong> allows the model to shift the output curve and improve learning.</li>
+                    </ul>
+
+                    <h4>3. Activation Function</h4>
+
+                    <p>The activation function decides whether a neuron's output should be passed to the next layer.
+                        Common activation functions are:</p>
+
+                    <ul>
+                        <li><strong>Sigmoid</strong></li>
+                        <li><strong>ReLU (Rectified Linear Unit)</strong></li>
+                        <li><strong>Tanh</strong></li>
+                    </ul>
+
+                    <img src="2.png" alt="Activation Functions">
+
+
+
+                    <h3>Layers in ANN</h3>
+
+                    <ol>
+                        <li><strong>Input Layer</strong>: This layer accepts the raw data as input.</li>
+                        <li><strong>Hidden Layers</strong>: These layers process the input data by performing
+                            mathematical operations.
+                            They use weights, biases, and activation functions to transform the data.</li>
+                        <li><strong>Output Layer</strong>: This layer provides the final result. For example, in a
+                            classification
+                            problem, it outputs the class label.</li>
+                    </ol>
+
+
+
+                    <h3>How Does Learning Happen in ANN?</h3>
+
+                    <p>Learning in an ANN involves adjusting weights and biases to minimize error. This is done in three
+                        main steps:</p>
+
+                    <h4>1. Forward Propagation</h4>
+
+                    <p>The input data is passed through the network from the input layer to the output layer.</p>
+
+                    <h4>2. Loss Function</h4>
+
+                    <p>The error between the predicted output and the actual output is calculated using a loss function.
+                        Common loss functions include:</p>
+
+                    <ul>
+                        <li><strong>Mean Squared Error (MSE)</strong></li>
+                        <li><strong>Cross-Entropy Loss</strong></li>
+                    </ul>
+
+                    <h4>3. Backpropagation</h4>
+
+                    <p>Backpropagation updates the weights and biases to reduce error. It uses:</p>
+
+                    <ul>
+                        <li><strong>Gradient Descent</strong> to minimize the loss function</li>
+                    </ul>
+
+                    <p>Here, is the learning rate, which controls how much to adjust the weights.</p>
+
+
+
+                    <h3>Applications of ANN</h3>
+
+                    <p>ANNs are widely used in various fields, such as:</p>
+
+                    <ol>
+                        <li><strong>Image Recognition</strong>: Identifying objects in photos.</li>
+                        <li><strong>Speech Recognition</strong>: Converting speech to text.</li>
+                        <li><strong>Natural Language Processing (NLP)</strong>: Language translation and chatbots.</li>
+                        <li><strong>Finance</strong>: Predicting stock prices and detecting fraud.</li>
+                    </ol>
+
+                    <h3>Advantages of ANN</h3>
+
+                    <ol>
+                        <li>Can learn and model complex relationships.</li>
+                        <li>Works well with large datasets.</li>
+                        <li>Can generalize to unseen data.</li>
+                    </ol>
+
+                    <h3>Disadvantages of ANN</h3>
+
+                    <ol>
+                        <li>Requires a lot of data for training.</li>
+                        <li>Computationally expensive.</li>
+                        <li>Can be difficult to interpret.</li>
+                    </ol>
+                </div>
+
+                <div class="blog-post-tags">
+                    <span class="blog-post-tag">artificial-neural-network</span>
+                    <span class="blog-post-tag">deep-learning</span>
+                    <span class="blog-post-tag">machine-learning</span>
+                    <span class="blog-post-tag">artificial-intelligence</span>
+                    <span class="blog-post-tag">neurons</span>
+                </div>
+            </article>
+        </main>
+    </div>
+
+    <script src="../../script.js"></script>
+</body>
+
+</html>

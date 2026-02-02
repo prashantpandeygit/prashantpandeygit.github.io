@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <meta name="keywords"
+        content="Prashant Pandey, Vision Transformer, dViT, dynamic resolution, inference optimization, deep learning">
+    <meta name="language" content="English">
+    <title>Dynamic Vision Transformer: Faster Inference Without Extra Training | Prashant Pandey</title>
+    <meta name="description"
+        content="Vision Transformers run at a fixed image resolution. Easy images still go through the full high resolution pipeline, wasting time and compute.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://prashantpandeygit.github.io/blogs/dynamic-vision-transformer/">
+    <meta property="og:title" content="Dynamic Vision Transformer: Faster Inference Without Extra Training">
+    <meta property="og:description"
+        content="Vision Transformers run at a fixed image resolution. Easy images still go through the full high resolution pipeline, wasting time and compute.">
+    <meta property="og:image" content="https://prashantpandeygit.github.io/assets/card.png">
+    <meta property="og:site_name" content="Prashant Pandey Portfolio">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Dynamic Vision Transformer: Faster Inference Without Extra Training">
+    <meta property="twitter:description"
+        content="Vision Transformers run at a fixed image resolution. Easy images still go through the full high resolution pipeline, wasting time and compute.">
+    <meta property="twitter:image" content="https://prashantpandeygit.github.io/assets/card.png">
+
+    <meta name="author" content="Prashant Pandey">
+    <link rel="canonical" href="https://prashantpandeygit.github.io/blogs/dynamic-vision-transformer/">
+
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+
+<body class="loading">
+    <div class="theme-toggle" id="theme-toggle-btn">
+        <svg id="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg id="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </div>
+
+    <nav class="top-navbar">
+        <a href="/blogs/" class="nav-back" aria-label="Back to blogs">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-arrow-left">
+                <path d="m12 19-7-7 7-7" />
+                <path d="M19 12H5" />
+            </svg>
+        </a>
+        <div class="nav-links">
+            <a href="/blogs/" class="nav-item active" data-section="blogs">blog</a>
+            <a href="/projects/" class="nav-item" data-section="projects">work</a>
+            <a href="/papers/" class="nav-item" data-section="papers">papers</a>
+        </div>
+        <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <div class="container">
+        <main>
+            <article class="blog-post-container">
+
+
+                <header class="blog-post-header">
+                    <h1 class="blog-post-title">Dynamic Resolution Vision Transformer: Faster Inference Without Extra
+                        Training</h1>
+                    <div class="blog-post-meta">
+                        <span>By Prashant Pandey</span>
+                        <span>Jan 10, 2026</span>
+                    </div>
+                </header>
+
+
+                <img src="cover.png" alt="Dynamic Vision Transformer Cover" style="width: 100%; margin-bottom: 1.5rem;">
+
+                <div class="blog-post-content">
+                    <p>Vision Transformers run at a fixed image resolution. Easy images still go through the full high
+                        resolution pipeline, wasting time and compute.</p>
+
+                    <p>In this post, I explain a <strong>Dynamic Vision Transformer </strong>that adapts resolution
+                        <strong>only at inference
+                            time</strong>. The model starts with low resolution and switches to high resolution only
+                        when needed.
+                        This gives speedups without changing training or architecture.
+                    </p>
+
+                    <h3>Why Every Image Does Not Need Full Resolution</h3>
+
+                    <p>A standard Vision Transformer processes every image the same way, same resolution, same number of
+                        layers, and compute cost. This is a problem because <strong>most images are easy</strong>. For
+                        example, a clear
+                        image of a car does not need the same effort as a blur or distorted image.</p>
+
+                    <p>Still, the model always runs at high resolution, which means higher latency, GPU memory usage and
+                        wasted compute during inference. Instead of scaling models up, I did work on <strong>making
+                            inference
+                            smarter</strong>.</p>
+
+                    <img src="1.png" alt="Architecture Diagram" style="width: 100%; margin-bottom: 1.5rem;">
+
+                    <h3>Implementation</h3>
+
+                    <p>The implementation of this idea does not disturb the architecture, it is just applied after the
+                        model is trained, i.e. during inference. It uses the single Vision Transformer architecture and
+                        same weights are used for both the resolutions. A distance threshold decides the escalation and
+                        only a small fraction of images move to high resolution, this just introduces an adaptive
+                        behaviour. You can see the full implementation with code at: <a
+                            href="https://github.com/prashantpandeygit/dViT"
+                            target="_blank">https://github.com/prashantpandeygit/dViT</a></p>
+
+                    <h3>Dynamic Resolution at Inference</h3>
+
+                    <p>Idea is to start inference with a low resolution (32x32) image, and check how confident the model
+                        is, and the model is confident enough (calculated using proxy signals and class token) then stop
+                        early, else run with higher (64x64) resolution.</p>
+
+
+
+
+                    <p>During inference, the class token is extracted at early transformer layer, it is then compared
+                        with the final layer class token. If the change is small the model is confident, else the image
+                        is hard and needs more details, this is what we call a cheap proxy signal.</p>
+
+                    <h3>Results</h3>
+
+                    <p>The model was trained and tested on CIFAR-10.</p>
+
+                    <ol>
+                        <li>~2.27× faster than always using high resolution</li>
+                        <li>Only ~9% of images escalate to high resolution</li>
+                        <li>Lower average latency per image</li>
+                        <li>Peak VRAM only increases when escalation happens</li>
+                    </ol>
+
+
+
+
+                    <p>The trained model can be found at: <a
+                            href="https://huggingface.co/parkneurals/lowres-visiontransformer-cifar10"
+                            target="_blank">https://huggingface.co/parkneurals/lowres-visiontransformer-cifar10</a></p>
+                </div>
+
+                <div class="blog-post-tags">
+                    <span class="blog-post-tag">vision-transformer</span>
+                    <span class="blog-post-tag">deep-learning</span>
+                    <span class="blog-post-tag">transformers</span>
+                    <span class="blog-post-tag">inference</span>
+                    <span class="blog-post-tag">model-training</span>
+                </div>
+            </article>
+        </main>
+    </div>
+
+    <script src="../../script.js"></script>
+</body>
+
+</html>
