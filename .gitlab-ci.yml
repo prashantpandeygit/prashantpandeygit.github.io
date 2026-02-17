@@ -2,7 +2,7 @@ pages:
   stage: deploy
   script:
     - mkdir -p public
-    - shopt -s extglob && cp -r !(public) public/
+    - find . -maxdepth 1 ! -name public ! -name . -exec cp -r {} public/ \;
   artifacts:
     paths:
       - public
